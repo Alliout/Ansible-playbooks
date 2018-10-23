@@ -1,5 +1,5 @@
 ---
-- hosts:myenv
+- hosts: myenv
   become_user: root
   serial: 2
 
