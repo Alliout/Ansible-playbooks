@@ -1,0 +1,30 @@
+---
+- hosts: webservers
+  remote_user: root
+  #become_user: root
+  #become_method: sudo
+  tasks:
+   - name: "Installing Apache"
+     package: name=httpd* state=present
+   - name: "Installing SQL"
+     package: name=mysql* state=present
+   - name: "Installing Php"
+     package: name=php* state=present
+   - name: "Installing SSL"
+     package: name=mod_ssl state=present
+   - name: "Installing SSL"
+     package: name=openssl state=present
+   - name: "Installing Python Mysql"
+     package: name=MySQL-python state=present
+
+   - name: start services
+     service: name=httpd enabled=true
+   - name: start services
+     service: name=mysqld state=started enabled=true           
+
+   - name: Create database 
+     mysql_db: name=hdb state=present collation=utf8_general_ci
+   - name: create a database user
+     mysql_user: name=hammad password=12345 priv=*.*:ALL host=linuxpyramid.com state=present
+
+

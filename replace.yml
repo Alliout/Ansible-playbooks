@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  remote_user: root
+
+  tasks:
+    - name: replace line in file
+      replace:
+           dest: /root/Desktop/abc
+           regexp: 'i love linux'
+           replace: 'line removed by hammad'
+           backup: yes

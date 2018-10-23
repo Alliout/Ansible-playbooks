@@ -1,0 +1,8 @@
+---
+- hosts: webservers
+  remote_user: root
+  #become_user: root
+  #become_method: sudo
+  tasks:
+   - name: "Installing Apache"
+     package: name=httpd* state=present
